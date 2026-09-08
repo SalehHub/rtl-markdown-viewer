@@ -1,6 +1,6 @@
 # Chrome Web Store submission copy
 
-Prepared for RTL Markdown Viewer 1.2.0 on September 8, 2026.
+Prepared for RTL Markdown Viewer 1.2.1 on September 8, 2026.
 
 ## Public project URLs
 
@@ -11,7 +11,7 @@ Prepared for RTL Markdown Viewer 1.2.0 on September 8, 2026.
 
 ## Files to upload
 
-- Extension package: `dist/rtl-markdown-viewer-1.2.0.zip`
+- Extension package: `dist/rtl-markdown-viewer-1.2.1.zip`
 - Store icon: `icons/icon-128.png`
 - Screenshots: `store-assets/screenshot-light-rtl-1280x800.png` and
   `store-assets/screenshot-dark-rtl-1280x800.png`
@@ -144,8 +144,9 @@ host it.
    the first table column is on the right, and code remains left-to-right.
 7. Change Direction, Theme, Font, Padding, Margin, and Round values and confirm
    that the preview updates.
-8. Confirm that Raw displays the original Markdown and Print opens Chrome's
-   print dialog.
+8. Confirm that Raw displays the original Markdown and disables Print; returning
+   to Preview enables Print. Confirm that Chrome's own print command produces the
+   rendered document even while Raw view is active.
 
 No account, credentials, network connection, payment, or external service is
 required.

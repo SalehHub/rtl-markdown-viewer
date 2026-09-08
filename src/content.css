@@ -122,8 +122,13 @@
   font-size: 12px;
 }
 
-.rtlmd-control:hover {
+.rtlmd-control:hover:not(:disabled) {
   border-color: color-mix(in srgb, var(--rtlmd-accent) 55%, var(--rtlmd-border));
+}
+
+.rtlmd-control:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 .rtlmd-control:focus-visible {
@@ -481,6 +486,8 @@
   }
 
   .rtlmd-rendered-view {
+    /* Browser-level printing still uses the preview while Raw is active. */
+    display: block !important;
     padding: var(--rtlmd-page-margin);
   }
 

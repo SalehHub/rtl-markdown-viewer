@@ -22,6 +22,8 @@ Arabic, Hebrew, and mixed RTL/LTR layout.
   Padding, margin, and rounded corners support `0px` for a flush, square layout.
 - Light, dark, and system themes are included.
 - Printing and Save as PDF preserve the selected direction and layout spacing.
+- The Print button is disabled in Raw view and re-enabled in Preview. Chrome's
+  own print command prints the rendered document even when Raw view is active.
 
 ## Install in Chrome
 
@@ -79,3 +81,10 @@ from reports and screenshots before sharing them.
 - highlight.js 11.12.0
 
 Their license texts are included in `vendor/licenses/`.
+
+## License
+
+This project's original code and assets are available under the [MIT License](LICENSE).
+Bundled third-party libraries retain their own licenses and copyright notices
+in `vendor/licenses/`. The extension ZIP includes these notices, the project
+license, and the privacy policy.

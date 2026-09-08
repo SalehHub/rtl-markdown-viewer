@@ -31,6 +31,7 @@
   let marginValue;
   let borderRadiusValue;
   let rawButton;
+  let printButton;
   let directionStatus;
 
   renderApplication();
@@ -176,7 +177,7 @@
     borderRadiusValue = borderRadiusGroup.querySelector("output");
 
     rawButton = buildButton("Raw", "Show raw Markdown", () => setRawMode(!rawMode));
-    const printButton = buildButton("Print", "Print or save as PDF", () => window.print());
+    printButton = buildButton("Print", "Print or save as PDF", () => window.print());
 
     toolbar.append(
       brand,
@@ -378,6 +379,8 @@
     rawView.hidden = !rawMode;
     rawButton.textContent = rawMode ? "Preview" : "Raw";
     rawButton.setAttribute("aria-pressed", String(rawMode));
+    printButton.disabled = rawMode;
+    printButton.title = rawMode ? "Switch to Preview to print" : "Print or save as PDF";
   }
 
   async function updateSettings(partialSettings) {

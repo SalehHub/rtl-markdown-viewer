@@ -19,7 +19,7 @@ mkdir -p "$output_directory"
 cd "$project_root"
 # Only package tracked extension files, never local notes or hidden files that
 # happen to be present in a source directory.
-git ls-files -- manifest.json icons popup sample src vendor > "$temporary_directory/package-files.txt"
+git ls-files -- manifest.json LICENSE PRIVACY.md icons popup sample src vendor > "$temporary_directory/package-files.txt"
 zip -Xqr "$temporary_directory/$archive_name" \
   -@ < "$temporary_directory/package-files.txt"
 
