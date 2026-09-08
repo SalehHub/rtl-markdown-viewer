@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="280" viewBox="0 0 440 280">
+  <defs>
+    <linearGradient id="background" x1="32" y1="18" x2="408" y2="264" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#0b286a"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#ffffff" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.08"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#061a47" flood-opacity="0.40"/>
+    </filter>
+  </defs>
+  <rect width="440" height="280" fill="url(#background)"/>
+  <circle cx="398" cy="26" r="116" fill="#60a5fa" opacity="0.13"/>
+  <circle cx="34" cy="270" r="128" fill="#38bdf8" opacity="0.10"/>
+  <g opacity="0.13" stroke="#ffffff">
+    <path d="M0 56H440M0 112H440M0 168H440M0 224H440"/>
+    <path d="M55 0V280M110 0V280M165 0V280M220 0V280M275 0V280M330 0V280M385 0V280"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="32" y="46" width="122" height="122" rx="28" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.26"/>
+    <path d="M56 80h74v58H56z" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M68 122V94l12 15 12-15v28M108 94v28m-10-10 10 10 10-10" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="182" y="96" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="750">RTL Markdown</text>
+  <text x="182" y="126" fill="#bfdbfe" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600">Viewer</text>
+  <text x="408" y="172" fill="#ffffff" font-family="Arial, sans-serif" font-size="17" font-weight="600" text-anchor="end">ملفات واضحة باتجاه صحيح</text>
+  <g transform="translate(182 198)">
+    <rect width="83" height="32" rx="16" fill="#ffffff" fill-opacity="0.14" stroke="#ffffff" stroke-opacity="0.20"/>
+    <text x="41.5" y="21" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">RTL  ←</text>
+    <rect x="93" width="83" height="32" rx="16" fill="#ffffff" fill-opacity="0.14" stroke="#ffffff" stroke-opacity="0.20"/>
+    <text x="134.5" y="21" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">→  LTR</text>
+  </g>
+</svg>

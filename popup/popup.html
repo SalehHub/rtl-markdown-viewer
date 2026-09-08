@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RTL Markdown Viewer</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="logo" aria-hidden="true">MD</div>
+        <div>
+          <h1>RTL Markdown Viewer</h1>
+          <p>عارض Markdown باتجاه صحيح</p>
+        </div>
+      </header>
+
+      <p id="status" class="status" role="status"></p>
+
+      <label>
+        <span>Writing direction <bdi>اتجاه النص</bdi></span>
+        <select id="direction">
+          <option value="auto">Auto detect — تلقائي</option>
+          <option value="rtl">Right to left — من اليمين</option>
+          <option value="ltr">Left to right — من اليسار</option>
+        </select>
+      </label>
+
+      <label>
+        <span>Theme <bdi>المظهر</bdi></span>
+        <select id="theme">
+          <option value="system">Follow system</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </label>
+
+      <label>
+        <span>Font size <output id="font-size-value"></output></span>
+        <input id="font-size" type="range" min="14" max="28" step="1" />
+      </label>
+
+      <label>
+        <span>Padding <output id="padding-value"></output></span>
+        <input id="padding" type="range" min="0" max="160" step="8" />
+      </label>
+
+      <label>
+        <span>Margin <output id="margin-value"></output></span>
+        <input id="margin" type="range" min="0" max="160" step="8" />
+      </label>
+
+      <label>
+        <span>Rounded corners <output id="border-radius-value"></output></span>
+        <input id="border-radius" type="range" min="0" max="48" step="2" />
+      </label>
+
+      <div class="actions">
+        <button id="reload" type="button">Reload file</button>
+        <button id="reset" type="button" class="secondary">Reset</button>
+      </div>
+
+      <p class="hint">
+        Local files require <strong>Allow access to file URLs</strong> in Chrome’s
+        extension details.
+      </p>
+    </main>
+
+    <script src="../src/shared.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
