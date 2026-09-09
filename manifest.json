@@ -1,8 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "RTL Markdown Viewer",
-  "version": "1.2.1",
-  "description": "Read local Markdown files with accurate Arabic, Hebrew, and mixed RTL/LTR rendering.",
+  "name": "__MSG_extensionName__",
+  "default_locale": "en",
+  "version": "1.2.2",
+  "description": "__MSG_extensionDescription__",
   "permissions": [
     "storage"
   ],
@@ -10,7 +11,7 @@
     "file:///*"
   ],
   "action": {
-    "default_title": "RTL Markdown Viewer",
+    "default_title": "__MSG_extensionName__",
     "default_popup": "popup/popup.html",
     "default_icon": {
       "16": "icons/icon-16.png",
@@ -38,6 +39,7 @@
         "vendor/marked.umd.js",
         "vendor/highlight.min.js",
         "src/shared.js",
+        "src/i18n.js",
         "src/content.js"
       ],
       "run_at": "document_idle"

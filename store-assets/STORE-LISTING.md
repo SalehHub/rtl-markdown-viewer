@@ -1,6 +1,6 @@
 # Chrome Web Store submission copy
 
-Prepared for RTL Markdown Viewer 1.2.1 on September 8, 2026.
+Prepared for RTL Markdown Viewer 1.2.2 on September 9, 2026.
 
 ## Public project URLs
 
@@ -11,7 +11,7 @@ Prepared for RTL Markdown Viewer 1.2.1 on September 8, 2026.
 
 ## Files to upload
 
-- Extension package: `dist/rtl-markdown-viewer-1.2.1.zip`
+- Extension package: `dist/rtl-markdown-viewer-1.2.2.zip`
 - Store icon: `icons/icon-128.png`
 - Screenshots: `store-assets/screenshot-light-rtl-1280x800.png` and
   `store-assets/screenshot-dark-rtl-1280x800.png`
@@ -30,7 +30,7 @@ Read local Markdown files with accurate Arabic, Hebrew, and mixed RTL/LTR render
 
 ### Category
 
-Productivity
+Tools
 
 ### Detailed description
 
@@ -44,6 +44,8 @@ Features:
 - Places the first table column correctly on the right in RTL documents.
 - Keeps code blocks, inline code, identifiers, and URLs left-to-right.
 - Includes light, dark, and system themes.
+- Uses Arabic or English controls based on Chrome's interface language, with
+  English as the fallback for other languages.
 - Adjusts font size, padding, margin, and rounded corners.
 - Shows the original Markdown with the Raw button.
 - Prints or saves the rendered document as PDF.
@@ -58,7 +60,7 @@ to file URLs**. Then open or reload a local `.md`, `.markdown`, `.mdown`, or
 
 ### Product name
 
-عارض Markdown للغات من اليمين إلى اليسار
+RTL Markdown Viewer
 
 ### Summary
 
@@ -76,6 +78,7 @@ to file URLs**. Then open or reload a local `.md`, `.markdown`, `.mdown`, or
 - وضع العمود الأول في الجهة اليمنى داخل الجداول العربية.
 - إبقاء الشفرة البرمجية والروابط والمعرّفات من اليسار إلى اليمين.
 - مظاهر فاتحة وداكنة وتلقائية.
+- واجهة عربية أو إنجليزية حسب لغة متصفح Chrome، مع الإنجليزية كلغة بديلة.
 - التحكم في حجم الخط والحشو والهامش واستدارة الزوايا.
 - عرض النص الأصلي عبر زر Raw.
 - الطباعة أو الحفظ بصيغة PDF.
@@ -147,6 +150,13 @@ host it.
 8. Confirm that Raw displays the original Markdown and disables Print; returning
    to Preview enables Print. Confirm that Chrome's own print command produces the
    rendered document even while Raw view is active.
+9. Test with Chrome's interface language set to Arabic and English. The popup
+   and toolbar should translate and mirror for Arabic. Other languages use
+   English. Document direction remains controlled by Auto/RTL/LTR independently.
+
+### Dashboard instructions (under 500 characters)
+
+No login required. In chrome://extensions, open Details and enable Allow access to file URLs. Open sample/arabic-sample.md or another local .md file. Verify RTL tables and LTR code. Test direction, theme, font, padding, margin (0 allowed), and corners. Raw disables Print; Preview enables it. Popup and toolbar follow Chrome's UI language: Arabic (RTL), English, or English fallback. UI language does not change document direction. Processing is local.
 
 No account, credentials, network connection, payment, or external service is
 required.

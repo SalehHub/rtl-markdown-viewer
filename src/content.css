@@ -138,7 +138,8 @@
 
 .rtlmd-select {
   max-width: 150px;
-  padding: 5px 28px 5px 9px;
+  padding-block: 5px;
+  padding-inline: 9px 28px;
   cursor: pointer;
 }
 

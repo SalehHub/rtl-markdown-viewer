@@ -3,71 +3,81 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>RTL Markdown Viewer</title>
+    <title data-i18n="extensionName">RTL Markdown Viewer</title>
     <link rel="stylesheet" href="popup.css" />
   </head>
   <body>
     <main>
       <header>
-        <div class="logo" aria-hidden="true">MD</div>
+        <div class="logo" dir="ltr" aria-hidden="true">MD</div>
         <div>
-          <h1>RTL Markdown Viewer</h1>
-          <p>عارض Markdown باتجاه صحيح</p>
+          <h1 dir="ltr" data-i18n="extensionName">RTL Markdown Viewer</h1>
+          <p data-i18n="subtitle">Markdown viewer with correct text direction</p>
         </div>
       </header>
 
-      <p id="status" class="status" role="status"></p>
+      <p id="status" class="status" role="status" data-i18n="statusInactive">Open a local Markdown file, then reload it.</p>
 
-      <label>
-        <span>Writing direction <bdi>اتجاه النص</bdi></span>
+      <label for="direction">
+        <span class="setting-heading" data-i18n="writingDirection">Writing direction</span>
         <select id="direction">
-          <option value="auto">Auto detect — تلقائي</option>
-          <option value="rtl">Right to left — من اليمين</option>
-          <option value="ltr">Left to right — من اليسار</option>
+          <option value="auto" data-i18n="directionAuto">Auto detect</option>
+          <option value="rtl" data-i18n="directionRtl">Right to left</option>
+          <option value="ltr" data-i18n="directionLtr">Left to right</option>
         </select>
       </label>
 
-      <label>
-        <span>Theme <bdi>المظهر</bdi></span>
+      <label for="theme">
+        <span class="setting-heading" data-i18n="theme">Theme</span>
         <select id="theme">
-          <option value="system">Follow system</option>
-          <option value="light">Light</option>
-          <option value="dark">Dark</option>
+          <option value="system" data-i18n="themeSystem">Follow system</option>
+          <option value="light" data-i18n="themeLight">Light</option>
+          <option value="dark" data-i18n="themeDark">Dark</option>
         </select>
       </label>
 
-      <label>
-        <span>Font size <output id="font-size-value"></output></span>
-        <input id="font-size" type="range" min="14" max="28" step="1" />
+      <label for="font-size">
+        <span class="setting-heading">
+          <span data-i18n="fontSize">Font size</span>
+          <output id="font-size-value" dir="ltr"></output>
+        </span>
+        <input id="font-size" type="range" min="14" max="28" step="1" dir="ltr" />
       </label>
 
-      <label>
-        <span>Padding <output id="padding-value"></output></span>
-        <input id="padding" type="range" min="0" max="160" step="8" />
+      <label for="padding">
+        <span class="setting-heading">
+          <span data-i18n="padding">Padding</span>
+          <output id="padding-value" dir="ltr"></output>
+        </span>
+        <input id="padding" type="range" min="0" max="160" step="8" dir="ltr" />
       </label>
 
-      <label>
-        <span>Margin <output id="margin-value"></output></span>
-        <input id="margin" type="range" min="0" max="160" step="8" />
+      <label for="margin">
+        <span class="setting-heading">
+          <span data-i18n="margin">Margin</span>
+          <output id="margin-value" dir="ltr"></output>
+        </span>
+        <input id="margin" type="range" min="0" max="160" step="8" dir="ltr" />
       </label>
 
-      <label>
-        <span>Rounded corners <output id="border-radius-value"></output></span>
-        <input id="border-radius" type="range" min="0" max="48" step="2" />
+      <label for="border-radius">
+        <span class="setting-heading">
+          <span data-i18n="roundedCorners">Rounded corners</span>
+          <output id="border-radius-value" dir="ltr"></output>
+        </span>
+        <input id="border-radius" type="range" min="0" max="48" step="2" dir="ltr" />
       </label>
 
       <div class="actions">
-        <button id="reload" type="button">Reload file</button>
-        <button id="reset" type="button" class="secondary">Reset</button>
+        <button id="reload" type="button" data-i18n="reload">Reload file</button>
+        <button id="reset" type="button" class="secondary" data-i18n="reset">Reset</button>
       </div>
 
-      <p class="hint">
-        Local files require <strong>Allow access to file URLs</strong> in Chrome’s
-        extension details.
-      </p>
+      <p class="hint" data-i18n="permissionHint">In Chrome’s extension details, enable Allow access to file URLs.</p>
     </main>
 
     <script src="../src/shared.js"></script>
+    <script src="../src/i18n.js"></script>
     <script src="popup.js"></script>
   </body>
 </html>

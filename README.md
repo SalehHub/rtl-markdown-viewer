@@ -21,6 +21,9 @@ Arabic, Hebrew, and mixed RTL/LTR layout.
 - Font size, page padding, page margin, and rounded corners can all be adjusted.
   Padding, margin, and rounded corners support `0px` for a flush, square layout.
 - Light, dark, and system themes are included.
+- The popup and document toolbar follow Chrome's interface language: Arabic uses
+  an RTL interface, English uses LTR, and other languages fall back to English.
+  The document's writing direction remains independent of the interface language.
 - Printing and Save as PDF preserve the selected direction and layout spacing.
 - The Print button is disabled in Raw view and re-enabled in Preview. Chrome's
   own print command prints the rendered document even when Raw view is active.
@@ -58,7 +61,8 @@ See the complete [Privacy Policy](PRIVACY.md).
 Submission copy, reviewer instructions, and correctly sized listing artwork are
 available in [`store-assets`](store-assets/). Run `npm run package` to create a
 versioned upload ZIP and SHA-256 checksum in `dist/`. Packaging requires a Git
-checkout and includes only tracked extension files. The checksum contains only
+checkout and includes tracked extension files plus the required locale catalogs
+and localization script. The checksum contains only
 the archive filename, without a local filesystem path.
 
 ## Development
@@ -67,6 +71,10 @@ Node.js 22 or later is recommended. No npm dependencies need to be installed.
 
 Run `npm run check` to check JavaScript syntax and run the test suite.
 Run `node tests/integration-server.js` for a local preview at the URL it prints.
+The previews use mock Chrome APIs and generic sample data. Append `?lang=ar` to
+either preview URL to simulate Arabic Chrome, or `?lang=fr` to test the English
+fallback. Add `&active` to the popup URL for an active Markdown file. Installed
+extensions use Chrome's native `chrome.i18n` API, not these test URL parameters.
 
 ## Support
 

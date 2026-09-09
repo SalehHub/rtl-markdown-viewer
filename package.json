@@ -1,12 +1,12 @@
 {
   "name": "rtl-markdown-viewer",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "license": "MIT",
   "private": true,
   "description": "A local-first Chrome Markdown viewer with real Arabic and mixed RTL/LTR support.",
   "scripts": {
     "test": "node --test tests/*.test.js",
-    "check": "node --check src/shared.js && node --check src/content.js && node --check popup/popup.js && node --check tests/integration-server.js && node --test tests/*.test.js",
+    "check": "node --check src/shared.js && node --check src/i18n.js && node --check src/content.js && node --check popup/popup.js && node --check tests/integration-server.js && node --check tests/i18n-mock.js && node --check tests/popup-browser-mock.js && node --test tests/*.test.js",
     "package": "bash scripts/package-extension.sh"
   }
 }

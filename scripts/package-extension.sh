@@ -17,9 +17,12 @@ trap cleanup EXIT
 mkdir -p "$output_directory"
 
 cd "$project_root"
-# Only package tracked extension files, never local notes or hidden files that
-# happen to be present in a source directory.
-git ls-files -- manifest.json LICENSE PRIVACY.md icons popup sample src vendor > "$temporary_directory/package-files.txt"
+# Package tracked extension files and the required localization assets. Never
+# include arbitrary untracked notes or hidden files from a source directory.
+{
+  git ls-files -- manifest.json LICENSE PRIVACY.md icons popup sample src vendor _locales
+  printf '%s\n' src/i18n.js _locales/en/messages.json _locales/ar/messages.json
+} | LC_ALL=C sort -u > "$temporary_directory/package-files.txt"
 zip -Xqr "$temporary_directory/$archive_name" \
   -@ < "$temporary_directory/package-files.txt"
 

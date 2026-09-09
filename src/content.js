@@ -4,7 +4,9 @@
   if (document.documentElement.dataset.rtlMarkdownViewer === "active") return;
 
   const shared = globalThis.RTLMarkdownShared;
-  if (!shared || !globalThis.marked || !globalThis.DOMPurify) return;
+  const i18n = globalThis.RTLMarkdownI18n;
+  if (!shared || !i18n || !globalThis.marked || !globalThis.DOMPurify) return;
+  const t = i18n.text;
 
   const decodedPath = decodeURIComponent(window.location.pathname || "");
   if (!/\.(md|markdown|mdown|mkd)$/i.test(decodedPath)) return;
@@ -116,10 +118,12 @@
   function buildToolbar() {
     const toolbar = document.createElement("header");
     toolbar.className = "rtlmd-toolbar";
-    toolbar.dir = "ltr";
+    toolbar.dir = i18n.direction;
+    toolbar.lang = i18n.language;
 
     const brand = document.createElement("div");
     brand.className = "rtlmd-brand";
+    brand.dir = "ltr";
     brand.textContent = "RTL Markdown";
 
     directionStatus = document.createElement("span");
@@ -129,55 +133,55 @@
     spacer.className = "rtlmd-toolbar-spacer";
 
     directionSelect = buildSelect(
-      "Writing direction",
+      t("writingDirection"),
       [
-        ["auto", "Auto direction"],
-        ["rtl", "Right to left"],
-        ["ltr", "Left to right"]
+        ["auto", t("directionAuto")],
+        ["rtl", t("directionRtl")],
+        ["ltr", t("directionLtr")]
       ],
       (value) => updateSettings({ direction: value })
     );
 
     themeSelect = buildSelect(
-      "Theme",
+      t("theme"),
       [
-        ["system", "System theme"],
-        ["light", "Light theme"],
-        ["dark", "Dark theme"]
+        ["system", t("themeSystem")],
+        ["light", t("themeLight")],
+        ["dark", t("themeDark")]
       ],
       (value) => updateSettings({ theme: value })
     );
 
     const fontGroup = buildStepper(
-      "Font size",
+      t("fontSize"),
       () => updateSettings({ fontSize: settings.fontSize - 1 }),
       () => updateSettings({ fontSize: settings.fontSize + 1 })
     );
     fontSizeValue = fontGroup.querySelector("output");
 
     const paddingGroup = buildStepper(
-      "Padding",
+      t("padding"),
       () => updateSettings({ padding: settings.padding - 8 }),
       () => updateSettings({ padding: settings.padding + 8 })
     );
     paddingValue = paddingGroup.querySelector("output");
 
     const marginGroup = buildStepper(
-      "Margin",
+      t("margin"),
       () => updateSettings({ margin: settings.margin - 8 }),
       () => updateSettings({ margin: settings.margin + 8 })
     );
     marginValue = marginGroup.querySelector("output");
 
     const borderRadiusGroup = buildStepper(
-      "Rounded corners",
+      t("roundedCorners"),
       () => updateSettings({ borderRadius: settings.borderRadius - 2 }),
       () => updateSettings({ borderRadius: settings.borderRadius + 2 })
     );
     borderRadiusValue = borderRadiusGroup.querySelector("output");
 
-    rawButton = buildButton("Raw", "Show raw Markdown", () => setRawMode(!rawMode));
-    printButton = buildButton("Print", "Print or save as PDF", () => window.print());
+    rawButton = buildButton(t("raw"), t("showRaw"), () => setRawMode(!rawMode));
+    printButton = buildButton(t("print"), t("printHint"), () => window.print());
 
     toolbar.append(
       brand,
@@ -219,10 +223,10 @@
     group.setAttribute("aria-label", label);
     group.title = label;
 
-    const decreaseButton = buildButton("−", `Decrease ${label.toLowerCase()}`, onDecrease);
+    const decreaseButton = buildButton("−", t("stepDecrease", label), onDecrease);
     const value = document.createElement("output");
     value.className = "rtlmd-stepper-value";
-    const increaseButton = buildButton("+", `Increase ${label.toLowerCase()}`, onIncrease);
+    const increaseButton = buildButton("+", t("stepIncrease", label), onIncrease);
 
     group.append(decreaseButton, value, increaseButton);
     return group;
@@ -334,13 +338,13 @@
 
     directionSelect.value = settings.direction;
     themeSelect.value = settings.theme;
-    fontSizeValue.textContent = `Font ${settings.fontSize}px`;
-    paddingValue.textContent = `Pad ${settings.padding}px`;
-    marginValue.textContent = `Margin ${settings.margin}px`;
-    borderRadiusValue.textContent = `Round ${settings.borderRadius}px`;
+    fontSizeValue.textContent = t("fontValue", String(settings.fontSize));
+    paddingValue.textContent = t("paddingValue", String(settings.padding));
+    marginValue.textContent = t("marginValue", String(settings.margin));
+    borderRadiusValue.textContent = t("roundValue", String(settings.borderRadius));
     directionStatus.textContent =
       settings.direction === "auto"
-        ? `Detected ${documentDirection.toUpperCase()}`
+        ? t("detectedDirection", documentDirection.toUpperCase())
         : documentDirection.toUpperCase();
   }
 
@@ -377,10 +381,13 @@
     rawMode = Boolean(enabled);
     renderedView.hidden = rawMode;
     rawView.hidden = !rawMode;
-    rawButton.textContent = rawMode ? "Preview" : "Raw";
+    rawButton.textContent = t(rawMode ? "preview" : "raw");
+    rawButton.title = t(rawMode ? "showPreview" : "showRaw");
+    rawButton.setAttribute("aria-label", rawButton.title);
     rawButton.setAttribute("aria-pressed", String(rawMode));
     printButton.disabled = rawMode;
-    printButton.title = rawMode ? "Switch to Preview to print" : "Print or save as PDF";
+    printButton.title = t(rawMode ? "printDisabled" : "printHint");
+    printButton.setAttribute("aria-label", printButton.title);
   }
 
   async function updateSettings(partialSettings) {

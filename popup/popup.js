@@ -2,6 +2,13 @@
   "use strict";
 
   const shared = globalThis.RTLMarkdownShared;
+  const i18n = globalThis.RTLMarkdownI18n;
+  i18n.localize(document);
+  document.documentElement.lang = i18n.language;
+  document.documentElement.dir = i18n.direction;
+
+  // A plain file preview has no extension APIs; keep its English HTML fallback.
+  if (!globalThis.chrome?.storage?.sync || !globalThis.chrome?.tabs) return;
   const direction = document.getElementById("direction");
   const theme = document.getElementById("theme");
   const fontSize = document.getElementById("font-size");
@@ -85,8 +92,6 @@
       tab?.url || ""
     );
 
-    status.textContent = isMarkdownFile
-      ? "Active on this Markdown file."
-      : "Open a local Markdown file, then reload it.";
+    status.textContent = i18n.text(isMarkdownFile ? "statusActive" : "statusInactive");
   }
 })();
